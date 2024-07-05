@@ -30,15 +30,15 @@ public:
             }
         }
 
-        if (count < size / 2)
+        count = 0;
+        for (int i = 0; i < size; i++)
         {
-
+            if (nums[i] == ele)
+                count++;
+        }
+        if (count > (size / 2))
             return ele;
-        }
-        else
-        {
-            return -1;
-        }
+        return -1;
     }
 };
 
