@@ -7,7 +7,7 @@ int lower(int *arr, int n, int k)
 
     int start = 0, end = n - 1;
 
-    int lb;
+    int lb = n;
     while (start <= end)
     {
 
@@ -29,20 +29,20 @@ int upper(int arr[], int n, int k)
 {
     int start = 0, end = n - 1;
 
-    int rb;
+    int rb = n;
 
     while (start <= end)
     {
         int mid = (start + end) / 2;
 
-        if (arr[mid] <= k)
+        if (arr[mid] > k)
         {
             rb = arr[mid];
-            start = mid + 1;
+            end = mid - 1;
         }
         else
         {
-            end = mid - 1;
+            start = mid + 1;
         }
     }
 
@@ -51,8 +51,8 @@ int upper(int arr[], int n, int k)
 
 int main()
 {
-    int arr[] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
-    cout << lower(arr, 10, 11);
-    cout << upper(arr, 10, 11);
+    int arr[] = {2, 4, 6, 8, 10, 11, 12, 14, 16, 18, 20};
+    cout << lower(arr, 11, 11);
+    cout << upper(arr, 11, 11);
     return 0;
 }
