@@ -36,7 +36,7 @@ vector<vector<int>> threeSum(vector<int> &nums)
 
 // Using sort
 
-vector<vector<int>> threeSum(vector<int> &nums)
+vector<vector<int>> threeSumSorting(vector<int> &nums)
 {
 
     int n = nums.size();
@@ -53,13 +53,13 @@ vector<vector<int>> threeSum(vector<int> &nums)
         {
             int sum = nums[i] + nums[j] + nums[k];
 
-            if (sum == 0)
+            if (sum == 5)
             {
                 hash.insert({nums[i], nums[j], nums[k]});
                 j++;
                 k--;
             }
-            else if (sum > 0)
+            else if (sum > 5)
             {
                 k--;
             }
@@ -76,5 +76,14 @@ vector<vector<int>> threeSum(vector<int> &nums)
 }
 int main()
 {
+
+    vector<int> nums = {1, 1, 2, 2, 2, 2};
+    vector<vector<int>> result = threeSumSorting(nums);
+    for (auto &v : result)
+    {
+        for (int &i : v)
+            cout << i << " ";
+        cout << endl;
+    }
     return 0;
 }
