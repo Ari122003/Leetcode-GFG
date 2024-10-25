@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int toBinary(int num)
+string toBinary(int num)
 {
     string binary = "";
     while (num > 0)
@@ -13,9 +13,7 @@ int toBinary(int num)
         num = num / 2;
     }
 
-    reverse(binary.begin(), binary.end());
-
-    return stoi(binary);
+    return binary;
 }
 
 int toDecimal(string bin)
@@ -38,8 +36,5 @@ int toDecimal(string bin)
 
 int main()
 {
-    string s = "1011";
-    cout << toDecimal(s);
-
     return 0;
 }

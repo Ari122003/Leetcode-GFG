@@ -4,36 +4,43 @@
 
 using namespace std;
 
-vector<vector<int>> merge(vector<vector<int>> &intervals)
+vector<vector<int>> mergeOverlap(vector<vector<int>> &arr)
 {
 
+    int n = arr.size();
+
+    if (n == 1)
+        return arr;
+
     vector<vector<int>> ans;
-    sort(intervals.begin(), intervals.end());
+    sort(arr.begin(), arr.end());
 
-    ans.push_back(intervals[0]);
+    ans.push_back(arr[0]);
 
-    int a = 0;
+    int p = 0;
 
-    for (int i = 1; i < intervals.size(); i++)
+    for (int i = 1; i < n; i++)
     {
-        int b = ans[a][1];
-        int c = intervals[i][0];
-        int d = intervals[i][1];
 
-        if (c <= b && b <= d)
+        // Overlap
+        if (ans[p][1] >= arr[i][0])
         {
-            swap(ans[a][1], d);
+            // swap 2nd of ans to 1st of arr
+
+            int valueToSwap = max(ans[p][1], arr[i][1]);
+
+            swap(ans[p][1], valueToSwap);
         }
-        else if (b < c && b < d)
+        // Not overlap
+        else
         {
-            ans.push_back({c, d});
-            a++;
+            ans.push_back(arr[i]);
+            p++;
         }
     }
 
     return ans;
 }
-
 int main()
 {
     return 0;
