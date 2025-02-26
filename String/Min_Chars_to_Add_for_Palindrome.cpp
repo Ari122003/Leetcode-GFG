@@ -1,10 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string longestPrefix(string s)
+int minChar(string &s)
 {
 
-    int n = s.length();
+    string temp = s;
+
+    reverse(temp.begin(), temp.end());
+
+    string combo = s + "#" + temp;
+
+    int n = combo.length();
+
+    // KMP Algorithm
+
     vector<int> lps(n, 0);
 
     int i = 0;
@@ -12,7 +21,7 @@ string longestPrefix(string s)
 
     while (j < n)
     {
-        if (s[i] == s[j])
+        if (combo[i] == combo[j])
         {
             lps[j] = i + 1;
             i++;
@@ -33,10 +42,9 @@ string longestPrefix(string s)
 
     int len = lps[n - 1];
 
-    string ans = s.substr(0, len);
-
-    return ans;
+    return s.size() - len;
 }
 int main()
 {
+    return 0;
 }
