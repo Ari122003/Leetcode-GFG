@@ -1,31 +1,30 @@
-#include <iostream>
-#include <vector>
-#include <map>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int subarraySum(vector<int> &nums, int k)
+int countSubarraysWithSumK(vector<int> &arr, int k)
 {
+    unordered_map<int, int> prefixSumFreq;
+    int sum = 0, count = 0;
 
-    map<int, int> mapi;
+    // Initialize with sum 0 appearing once (to handle cases where subarray itself equals k)
+    prefixSumFreq[0] = 1;
 
-    int count = 0, presum = 0;
-
-    mapi[0] = 1;
-
-    for (int i = 0; i < nums.size(); i++)
+    for (int num : arr)
     {
+        sum += num;
 
-        presum += nums[i];
+        // Check if (sum - k) exists in the map
+        if (prefixSumFreq.find(sum - k) != prefixSumFreq.end())
+        {
+            count += prefixSumFreq[sum - k];
+        }
 
-        count += mapi[presum - k];
-
-        mapi[presum] += 1;
+        // Store/update the frequency of the current prefix sum
+        prefixSumFreq[sum]++;
     }
 
     return count;
 }
-
 int main()
 {
     return 0;
