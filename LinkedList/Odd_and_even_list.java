@@ -1,15 +1,15 @@
 public class Odd_and_even_list {
-    public ListNode oddEvenList(ListNode head) {
+    public Node oddEvenList(Node head) {
 
         if (head == null || head.next == null) {
             return head;
         }
 
-        ListNode odd = head;
-        ListNode even = head.next;
+        Node odd = head;
+        Node even = head.next;
 
-        ListNode o = odd;
-        ListNode e = even;
+        Node o = odd;
+        Node e = even;
 
         while (o != null && e != null) {
 

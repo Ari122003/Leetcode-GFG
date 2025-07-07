@@ -46,4 +46,9 @@ public class Remove_nth_node_from_end {
         return head;
 
     }
+
+    public static void main(String[] args) {
+        System.out.println("helo");
+    }
+
 }
