@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Left_View {
-
-    // Iterative
-    ArrayList<Integer> leftViewIterative(Node root) {
-
+public class Right_view {
+    // Iterrative
+    ArrayList<Integer> rightView(Node root) {
         Queue<Node> q = new LinkedList<>();
 
         ArrayList<Integer> ans = new ArrayList<>();
@@ -25,7 +23,7 @@ public class Left_View {
 
                 Node front = q.poll();
 
-                if (i == 0) {
+                if (i == size - 1) {
                     ans.add(front.data);
                 }
 
@@ -42,7 +40,6 @@ public class Left_View {
         }
 
         return ans;
-
     }
 
     // Recursive
@@ -56,17 +53,15 @@ public class Left_View {
             arr.add(root.data);
         }
 
-        solve(root.left, level + 1, arr);
         solve(root.right, level + 1, arr);
+        solve(root.left, level + 1, arr);
     }
 
-    ArrayList<Integer> leftView(Node root) {
-
+    ArrayList<Integer> rightVieww(Node root) {
         ArrayList<Integer> ans = new ArrayList<>();
 
         solve(root, 0, ans);
 
         return ans;
-
     }
 }
