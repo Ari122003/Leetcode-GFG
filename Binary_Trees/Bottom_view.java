@@ -6,19 +6,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.TreeMap;
 
-class Pair {
-    Node node;
-    int hd;
-
-    public Pair(Node node, int hd) {
-        this.node = node;
-        this.hd = hd;
-    }
-}
-
-public class Top_View {
-    ArrayList<Integer> topView(Node root) {
-
+public class Bottom_view {
+    public ArrayList<Integer> bottomView(Node root) {
         ArrayList<Integer> ans = new ArrayList<>();
 
         TreeMap<Integer, List<Integer>> map = new TreeMap<>();
@@ -38,12 +27,13 @@ public class Top_View {
                 map.put(horizontalDistance, new ArrayList<>());
             }
 
-            // add only if the vertical level is empty
+            // remove the last
 
-            if (map.get(horizontalDistance).size() == 0) {
+            map.get(horizontalDistance).clear();
 
-                map.get(horizontalDistance).add(curr.data);
-            }
+            // then push in that vertical level
+
+            map.get(horizontalDistance).add(curr.data);
 
             if (curr.left != null) {
                 q.offer(new Pair(curr.left, horizontalDistance - 1));
