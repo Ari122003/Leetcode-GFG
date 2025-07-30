@@ -2,17 +2,17 @@ package Binary_Trees;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
-public class Print_level_by_level {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+public class Reverse_Level_Order {
+    public ArrayList<Integer> reverseLevelOrder(Node root) {
 
-        Queue<TreeNode> q = new LinkedList<>();
+        Stack<ArrayList<Integer>> stack = new Stack<>();
 
-        List<List<Integer>> ans = new ArrayList<>();
-        if (root == null)
-            return ans;
+        Queue<Node> q = new LinkedList<>();
+
+        ArrayList<Integer> result = new ArrayList<>();
 
         q.add(root);
 
@@ -20,28 +20,30 @@ public class Print_level_by_level {
 
             int size = q.size();
 
-            List<Integer> level = new ArrayList<>();
+            ArrayList<Integer> level = new ArrayList<>();
 
             for (int i = 0; i < size; i++) {
 
-                TreeNode front = q.poll();
+                Node front = q.poll();
 
                 level.add(front.data);
 
                 if (front.left != null) {
-
                     q.add(front.left);
                 }
                 if (front.right != null) {
-
                     q.add(front.right);
                 }
             }
 
-            ans.add(level);
-
+            stack.push(level);
         }
 
-        return ans;
+        while (!stack.empty()) {
+            result.addAll(stack.pop());
+        }
+
+        return result;
+
     }
 }
