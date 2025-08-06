@@ -6,7 +6,7 @@ public class Lowest_common_Ancestor {
         if (root == null) {
             return null;
         }
-        if (root.val == p.val || root.val == q.val) {
+        if (root.data == p.data || root.data == q.data) {
             return root;
         }
 
